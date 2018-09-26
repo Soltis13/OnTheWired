@@ -1,41 +1,34 @@
-'use strict'
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
 
-import cors from 'cors';
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
+const users = require('./routes/api/articles');
+const profile = require('./routes/api/index');
+
 
 const app = express();
-const router = express.Router();
 
-// env variables
-const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mern-starter';
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+// DB Config
+const db = require('./config/keys').mongoURI;
 
-app.use(bodyParser.json(),cors())
+// Connect to MongoDB
+mongoose
+  .connect(db)
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
-app.use(require('../route/auth-router'));
+// Passport middleware
+app.use(passport.initialize());
 
-app.all('*', (request, response) => {
-  console.log('Returning a 404 from the catch-all route');
-  return response.sendStatus(404);
-});
+// Use Routes
+app.use('/api/articles', articles);
+app.use('/api/index', index);
 
-// error middleware
-app.use(require('./error-middleware'));
+const port = process.env.PORT || 5000;
 
-
-export const start = () => {
-  app.listen(PORT, () =>{
-    console.log(`Listening on port: ${PORT}`)
-  })
-}
-
-export const stop = () => {
-  app.close(PORT, () => {
-    console.log(`Shut down on port: ${PORT}`)
-  })
-}
+app.listen(port, () => console.log(`Server running on port ${port}`));
