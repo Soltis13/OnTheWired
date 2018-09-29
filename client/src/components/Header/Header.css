@@ -1,0 +1,17 @@
+.header {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 4rem;
+    color: rgba(19, 18, 18, 0.667);
+    text-shadow: 3px 3px 3px #3333;
+    border-radius: .5rem;
+   
+  }
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
