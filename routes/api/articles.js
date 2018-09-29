@@ -1,14 +1,17 @@
 const router = require("express").Router();
 const controllers = require("../../controllers/controllers");
 
-// Matches with "/api/articles"
+// @route   GET "/api/articles"
+// @desc    Get posts
+// @access  Public
 router.route("/")
   .get(controllers.findAll)
   .post(controllers.create);
 
-// Matches with "/api/articles/:id"
-router
-  .route("/:id")
+// @route   GET "/api/articles/:id"
+// @desc    Get posts
+// @access  Public
+router.route("/:id")
   .get(controllers.findById)
   .put(controllers.update)
   .delete(controllers.remove);
