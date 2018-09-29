@@ -16,8 +16,9 @@ const Results = props => (
             <ListItem key={article._id}>
 
               <Button 
-                onClick={() => props.saveArticle({title:article.headline.main, url:article.web_url, date:article.pub_date, nytID:article._id})}
-                style={{ float: "left", margin: 15 }}
+                onClick={() => props.saveArticle({title:article.headline.main, url:article.web_url, date:article.pub_date, 
+                  nytID:article._id})}
+                  style={{ float: "left", margin: 15 }}
                 className={"btn btn-success"}
               >
                 Save

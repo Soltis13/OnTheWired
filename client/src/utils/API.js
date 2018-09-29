@@ -4,7 +4,7 @@ export default {
   // Get NYT articles using nytimes.com api
   apiArticles: function(topic, startDate, endDate) {
     const baseURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key="
-    const apikey = "744063e2d6894d5d9009bfdd5398101d";
+    const apikey = "8f324a60a2e946e8bab26c821da58435";
     const endURL = "&sort=newest&fl=web_url,headline,pub_date,_id";
     let url = "";
 

@@ -9,6 +9,7 @@ import { Col, Row, Container } from "../Grid";
 import { Input } from "../Form";
 import Button from "../Button";
 import "./Main.css";
+import Footer from "../layout/Footer";
 
 class Main extends Component {
   state = {
@@ -65,30 +66,30 @@ class Main extends Component {
     return (
       <Container>
         <Jumbotron/>
-        <p className="Header">Search for articles of interest!</p>
+        
         <Row>
           <Col size="md-12">
             <Header>
-              Search
+              News Search <p className="Header">Find articles of interest!</p>
             </Header>
             <form>
               <Input
                 value={this.state.topic}
                 onChange={this.handleInputChange}
                 name="topic"
-                placeholder="Topic"
+                placeholder="Enter Search Topic"
               />
               <Input
                 value={this.state.startDate}
                 onChange={this.handleInputChange}
                 name="startDate"
-                placeholder="Start Date (YYYYMMDD)"
+                placeholder="Enter Start Date (YYYYMMDD)"
               />
               <Input
                 value={this.state.endDate}
                 onChange={this.handleInputChange}
                 name="endDate"
-                placeholder="End Date (YYYYMMDD)"
+                placeholder="Enter End Date (YYYYMMDD)"
               />
               <Button
                 onClick={this.handleFormSubmit}
@@ -101,15 +102,15 @@ class Main extends Component {
           </Col>
         </Row>
 
-        {/* Render only if there are search results */}
         { this.state.results.length > 0 &&
           <Results results={this.state.results} saveArticle={this.saveArticle} />
         }
 
-        {/* Render only if there are saved articles */}
         { this.state.articles.length > 0 &&
           <Saved articles={this.state.articles} deleteArticle={this.deleteArticle}/>
         }
+
+        <Footer/>
         
       </Container>
     );
