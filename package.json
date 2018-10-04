@@ -2,7 +2,7 @@
   "name": "onthewired",
   "version": "1.0.0",
   "description": "React-based rendition of the New York Times Article Search application",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "./node_modules/.bin/concurrently \"npm run server\" \"npm run client\"",
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/Soltis13/OnTheWired/issues"
   },
-  "homepage": "https://github.com/Soltis13/OnTheWired#readme",
+  "homepage": "https://github.com/Soltis13/OnTheWired/",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
