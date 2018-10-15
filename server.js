@@ -12,9 +12,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
-
 // DB Config
 const db = require('./config/keys').mongoURI;
 
@@ -27,8 +24,8 @@ mongoose
 // Passport middleware
 app.use(passport.initialize());
 
-// Use Routes
-app.use('/api/articles')(articles);
+// Configure routes, both API and view
+app.use(routes);
 
 //Server static assets if in production
 
