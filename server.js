@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 5000;
+
 
 
 // DB Config
@@ -20,7 +20,7 @@ const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI  || db)
+  .connect(db)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
@@ -28,7 +28,7 @@ mongoose
 app.use(passport.initialize());
 
 // Use Routes
-app.use('/api/articles', articles);
+app.use('/api/articles')(articles);
 
 //Server static assets if in production
 
@@ -43,5 +43,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
